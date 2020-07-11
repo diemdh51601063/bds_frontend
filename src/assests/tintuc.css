@@ -1,0 +1,91 @@
+.main-body {
+    width: 100%;
+}
+
+.main-body_frame {
+    width: 1200px;
+    margin: auto;
+}
+
+.frame__title h3 {
+    background: #15a1b1;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 6px 16px 6px 13px;
+    display: inline-block;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    text-align: center;
+    margin: 0;
+}
+
+.frame__title___des {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    border-top: 2px #15a1b1 solid;
+}
+
+.form__frame__input {
+    padding: 0 68px 0 0;
+}
+
+.form__frame__inputTitle {
+    padding: 0 14px 0 0;
+}
+
+.col-lg-12 {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-around;
+}
+
+.col-lg-12 label {
+    font-weight: bold;
+}
+
+.col-lg-6 {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-around;
+    padding: 0 70px;
+}
+
+.col-lg-6 label {
+    font-weight: bold;
+}
+
+.col-lg-3 {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.col-lg-3 label {
+    font-weight: bold;
+}
+
+
+.form-group {
+    width: 70%;
+}
+
+.uploadHinh{
+    width: 6rem;
+    height: 5rem;
+}
+.textCheckbox{
+    color: crimson;
+    font-weight: bold;
+}
+.hinhdaidientinbds
+{
+    width: 200px;
+    height: 200px;
+}
+.timkiem
+{
+    font-size: 1rem;
+}
