@@ -10,6 +10,8 @@ import Tintuc from './page/Tintuc';
 import Timkiem from './page/Timkiem';
 import Danhsach from './components/tinbds/Danhsach';
 import Chitiettin from './components/tinbds/Chitiettin';
+import TrangCaNhanComponent from './components/nguoidung/trangcanhan';
+import ChinhsuaTinTucComponent from './components/tintuc/chinhsuatinbds'
 
 import { Switch, Route } from 'react-router-dom';
 import DangNhap from './page/Dangnhap';
@@ -55,11 +57,14 @@ function App() {
 
         <Route path="/chitiet" exact component={Chitiettin} />;
 
-        <Route path="/dangnhap" exact component={DangNhap} />;
+        <Route path="/trangcanhan" exact component={TrangCaNhanComponent} />;
 
         <Route path="/dangtin" exact component={Tintuc} />
 
+        <Route path="/chinhsuatin" exact component={ChinhsuaTinTucComponent} />;
+
         <Route path="/" component={Trangchu} />;
+        
 
       </Switch>
       <Footer_end></Footer_end>

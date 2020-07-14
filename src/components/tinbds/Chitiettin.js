@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Container, Row, Carousel, Button, Col, Table } from 'react-bootstrap';
 function Chitiettin() {
     return (
-        <Container className="clearfix justify-content-center ">
+        <Container>
             <hr></hr>
             <div>
                 <h4>Thông Tin</h4>

@@ -10,7 +10,7 @@ import { getAllPhuongXa, getAllQuanHuyen } from '../../services/thanhpho.service
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { themBds } from '../../services/tinBds.service';
-function TinTucComponent() {
+function ChinhsuaTinTucComponent() {
 
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
@@ -220,30 +220,7 @@ function TinTucComponent() {
               </Card.Body>
             </Card>
             <br></br>
-            <Card border="primary" style={{ width: '20rem' }} className='w-100'>
-              <Card.Header style={{ color: 'green' }}><b>Lưu ý khi đăng tin</b></Card.Header>
-              <Card.Body>
-                <Card.Title>Primary Card Title</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                  </Card.Text>
-              </Card.Body>
-            </Card>
 
-            <br></br>
-            <Card border="primary" style={{ width: '20rem' }} className='w-100'>
-              <Card.Header style={{ color: 'green' }}><b>Lưu ý khi đăng tin</b></Card.Header>
-              <Card.Body>
-                <Card.Title>Primary Card Title</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up the bulk
-                  of the card's content.
-                  </Card.Text>
-              </Card.Body>
-            </Card>
-
-            <br></br>
             <Card border="primary" style={{ width: '20rem' }} className='w-100'>
               <Card.Header style={{ color: 'green' }}><b>Lưu ý khi đăng tin</b></Card.Header>
               <Card.Body>
@@ -258,7 +235,7 @@ function TinTucComponent() {
 
           <Col md={9}>
             <Form onSubmit={handleSubmit(addNewBds)} className="border border-light p-3">
-              <p className="text-center h4 mb-4">Thông Tin Bất Động Sản</p>
+              <p className="text-center h4 mb-4">Chỉnh Sửa Tin Bất Động Sản</p>
               <Form className="border border-light p-5" >
                 <p className="h4 mb-4">Thông Tin Cơ Bản</p>
                 <Form.Row>
@@ -594,4 +571,4 @@ function TinTucComponent() {
     </div >
   );
 }
-export default TinTucComponent;
+export default ChinhsuaTinTucComponent;
