@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { BACKEND_URL } from './http.service';
+import { createBearerToken } from './khachhang.service';
 
 export function getAllBds(dispatch) {
     axios.get(`${BACKEND_URL}/api/tinbds`).then(res => {
@@ -11,12 +12,17 @@ export function getAllBds(dispatch) {
 }
 
 export function themBds(data, dispatch = null) {
-    axios.post(`${BACKEND_URL}/api/tinbds`, data).then(res => {
+    axios.post(`${BACKEND_URL}/api/tinbds`, data, createBearerToken()).then(res => {
+        console.log(res.data);
         dispatch({
             type: 'INIT',
             listBds: res.data,
         })
     })
+}
+
+export async function xemchitietBds(idtin) {
+    return await axios.get(`${BACKEND_URL}/api/tinbds/${idtin}`).then(res => res.data);
 }
 
 export async function timkiemBds(data) {
