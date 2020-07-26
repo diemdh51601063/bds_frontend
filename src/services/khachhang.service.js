@@ -9,6 +9,11 @@ export async function signIn(data) {
   return respose.data.token;
 }
 
+export async function signUp(data){
+  const respose= await post(`${BACKEND_URL}/api/dangkykhachhang`, data);
+  return respose.data.token;
+}
+
 export function decodeToken() {
   try {
     const token = localStorage.getItem('token');

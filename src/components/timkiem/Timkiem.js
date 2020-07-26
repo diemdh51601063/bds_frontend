@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { timkiemBds } from '../../services/tinBds.service';
 import { getAllQuanHuyen, getAllPhuongXa } from '../../services/thanhpho.service';
+import { BACKEND_URL } from '../../services/http.service';
 
 function Timkiem() {
   const { register, handleSubmit } = useForm();
@@ -194,6 +195,7 @@ function Timkiem() {
                         <option value="3-5-tỷ">3 tỷ - 5 tỷ</option>
                         <option value="5-7-tỷ">5 tỷ - 7 tỷ</option>
                         <option value="7-10-tỷ">7 tỷ - 10 tỷ</option>
+                        <option value="10-20-tỷ">10 tỷ - 20 tỷ</option>
                       </select>
                     </div>
                   </div>
@@ -251,7 +253,7 @@ function Timkiem() {
                   <h5 className="text-danger">{tinbds.tieude}</h5>
                   <Row>
                     <Col md={3}>
-                      <img width="100%" height="100%" src="https://www.thuocdantoc.org/wp-content/uploads/2019/05/cay-hoa-hoe.jpg"></img>
+                      <img width="100%" height="100%" src={`${BACKEND_URL}/img/tinbds/${tinbds.hinhdaidien}`}></img>
                     </Col>
                     <Col md={9}>
                       <div>

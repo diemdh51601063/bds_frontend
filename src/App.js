@@ -40,31 +40,29 @@ function App() {
     getAllHuong(dispatch);
     getAllDichvu(dispatch);
     getAllTienich(dispatch);
-    
-  }, []);
 
-  
+  }, []);
 
   return (
     <div>
       <Menu />
       <Slide />
-     
+
       <Switch>
         <Route path="/timkiem" exact component={Timkiem} />;
 
         <Route path="/danhsach" exact component={Danhsach} />;
 
-        <Route path="/chitiet" exact component={Chitiettin} />;
+        <Route path="/chitiet/:idtin" exact component={Chitiettin} />;
 
         <Route path="/trangcanhan" exact component={TrangCaNhanComponent} />;
 
         <Route path="/dangtin" exact component={Tintuc} />
 
-        <Route path="/chinhsuatin" exact component={ChinhsuaTinTucComponent} />;
+        <Route path="/chinhsuatin/:idtin" exact component={ChinhsuaTinTucComponent} />;
 
         <Route path="/" component={Trangchu} />;
-        
+
 
       </Switch>
       <Footer_end></Footer_end>

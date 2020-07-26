@@ -6,6 +6,7 @@ import danhmucReducer from './danhmuc.reducer';
 import huongReducer from './huong.reducer';
 import dichvuReducer from './dichvu.reducer';
 import tienichReducer from './tienich.reducer';
+import khachhangReducer from './khachhang.reducer';
 
 const rootReducer = combineReducers({
     tinBds: tinBdsReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     danhmuc:danhmucReducer,
     huong:huongReducer,
     dichvu:dichvuReducer,
-    tienich:tienichReducer
+    tienich:tienichReducer,
+    khachhang:khachhangReducer
 });
 
 export default rootReducer;

@@ -25,7 +25,7 @@ function Danhsach() {
 
                                     <Card.Body>
                                         <Card.Text>
-                                            <h3><Link to="/chitiet">{tinbds.tieude}</Link></h3>
+                                            <h3><Link to={`/chitiet/${tinbds.id}`}>{tinbds.tieude}</Link></h3>
                                         </Card.Text>
                                         <Card.Text>
                                             <h4>Nội Dung Mô Tả:</h4>
@@ -43,22 +43,6 @@ function Danhsach() {
             {
                 listBds.length === 0 && <h1>Loader</h1>
             }
-
-            <Pagination>
-
-                <Pagination.Prev />
-                <Pagination.Item active>{1}</Pagination.Item>
-                <Pagination.Item>{2}</Pagination.Item>
-                <Pagination.Item>{3}</Pagination.Item>
-                <Pagination.Item>{4}</Pagination.Item>
-                <Pagination.Item>{5}</Pagination.Item>
-                <Pagination.Item disabled>{9}</Pagination.Item>
-
-                <Pagination.Ellipsis />
-                <Pagination.Item>{10}</Pagination.Item>
-                <Pagination.Next />
-
-            </Pagination>
 
         </Container>
 

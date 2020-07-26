@@ -22,7 +22,11 @@ export function themBds(data, dispatch = null) {
 }
 
 export async function xemchitietBds(idtin) {
-    return await axios.get(`${BACKEND_URL}/api/tinbds/${idtin}`).then(res => res.data);
+    return await axios.get(`${BACKEND_URL}/api/tinbds/${idtin}`).then(res => res.data[0]);
+}
+
+export async function xemchitietHinhBds(idtin) {
+    return await axios.get(`${BACKEND_URL}/api/cttinmedia/${idtin}`).then(res => res.data);
 }
 
 export async function timkiemBds(data) {
