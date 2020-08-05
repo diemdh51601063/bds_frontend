@@ -12,13 +12,13 @@ function Danhsach() {
             <hr></hr>
             {
                 listBds.length !== 0 && listBds.map(tinbds => {
+                    if(tinbds.tinhtrang==1){
                     return (
                         
                         <Card className="mt-3">
                             <Row>
-
                                 <Col md={4}>
-                                    <Card.Img variant="top"
+                                    <Card.Img variant="top" height="300px"
                                         src={`${BACKEND_URL}/img/tinbds/${tinbds.hinhdaidien}`} />
                                 </Col>
                                 <Col md={8}>
@@ -37,8 +37,9 @@ function Danhsach() {
                                 </Col>
                             </Row>
                         </Card>
-                    )
+                    )}
                 })
+            
             }
             {
                 listBds.length === 0 && <h1>Loader</h1>

@@ -25,6 +25,11 @@ export function decodeToken() {
   }
 }
 
+export async function xacthucemail(data){
+  const ketqua=await post(`${BACKEND_URL}/api/xacthuc`, data, createBearerToken());
+  return ketqua;
+}
+
 export async function signOut(){
   localStorage.removeItem('token');
 }

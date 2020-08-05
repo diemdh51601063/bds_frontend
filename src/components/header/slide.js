@@ -4,56 +4,63 @@ import Image from './banner.jpg';
 import { Row, Col } from 'react-bootstrap';
 function Slide() {
   return (
-    <>
+    <div className="bg-light">
       <Row>
         <Col md={12}>
 
           <Carousel>
             <Carousel.Item>
+            <div className="ml-5 mr-5">
               <img
-                style={{ height: "400px" }}
+                style={{ height: "500px" }}
                 className="d-block w-100"
-                src='http://cdn.batdongsan.vn/FileManager/Banner/Banner%20Home/tk-vip.jpg'
-                alt="First slide"
+                src='https://bdsdreamland.net/wp-content/uploads/2018/11/slider-2-1200x543.png'
+                alt=""
               />
-              <Carousel.Caption>
-                <h3>First slide label</h3>
-                
-              </Carousel.Caption>
+              </div>
             </Carousel.Item>
             <Carousel.Item>
+              <div className="ml-5 mr-5">
               <img
-                style={{ height: "400px" }}
+                style={{ height: "500px" }}
                 className="d-block w-100"
-                src="http://cdn.batdongsan.vn/FileManager/Banner/bds-office.jpg"
-                alt="Second slide"
+                src="https://i.thoibaokinhdoanh.vn/2020/04/14/14-4-ban-hang-online-1586853964.jpg"
+                alt=""
               />
-
-              <Carousel.Caption>
-                <h3>Second slide label</h3>
-                
-              </Carousel.Caption>
+              </div>
             </Carousel.Item>
             <Carousel.Item>
+            <div className="ml-5 mr-5">
               <img
-
+                style={{ height: "500px" }}
                 className="d-block w-100"
-                src="https://assets.muabannhadat.vn/mbnd/img/home-top.c250cf4d.jpg"
-                alt="Third slide"
-                style={{ height: "400px" }}
+                src="https://gadvn.com/wp-content/uploads/2018/12/marketing-trong-bat-dong-san-1.jpg"
+                alt=""
               />
+              </div>
 
               <Carousel.Caption>
                 <h3>Third slide label</h3>
-                
+
               </Carousel.Caption>
+            </Carousel.Item>
+
+            <Carousel.Item>
+            <div className="ml-5 mr-5">
+              <img
+                style={{ height: "500px" }}
+                className="d-block w-100"
+                src="https://mdland.com.vn/upload/images/LGJ/slide-le-grand-jadin.jpg"
+                alt=""
+              />
+              </div>
             </Carousel.Item>
           </Carousel>
         </Col>
 
-        
+
       </Row>
-    </>
+    </div>
   );
 }
 

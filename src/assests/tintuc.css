@@ -89,3 +89,22 @@
 {
     font-size: 1rem;
 }
+.errorvalidate
+{
+    color: crimson;
+    font-weight: bold;
+}
+.navbartext{
+    color:black;
+    font-weight: bold;
+}
+.navbarbg{
+    background-color:whitesmoke;
+}
+.contentbg{
+    background-color:rgb(240, 247, 244);
+}
+.tieudechitiettin{
+    color: mediumblue;
+    font-weight: bold;
+}

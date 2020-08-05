@@ -27,6 +27,7 @@ import { getAllDanhmuc } from './services/danhmuc.service';
 import { getAllHuong } from './services/huong.service';
 import { getAllDichvu } from './services/dichvu.service';
 import { getAllTienich } from './services/tienich.service';
+import nhapmaxacthuc from './components/nguoidung/nhapmaxacthuc';
 
 
 function App() {
@@ -60,6 +61,8 @@ function App() {
         <Route path="/dangtin" exact component={Tintuc} />
 
         <Route path="/chinhsuatin/:idtin" exact component={ChinhsuaTinTucComponent} />;
+
+        <Route path="/nhapmaxacnhan" component={nhapmaxacthuc}  exact/>
 
         <Route path="/" component={Trangchu} />;
 

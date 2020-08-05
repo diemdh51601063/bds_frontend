@@ -3,14 +3,37 @@ import { Card, Container, Row, Carousel, Button, Col, Table } from 'react-bootst
 import { useParams } from 'react-router';
 import { xemchitietBds, xemchitietHinhBds } from '../../services/tinBds.service';
 import { BACKEND_URL } from '../../services/http.service';
+import '../../assests/tintuc.css';
+import { getAllPhuongXa, getAllQuanHuyen } from '../../services/thanhpho.service';
+import { useSelector } from 'react-redux';
 function Chitiettin() {
+    //lay id tin bds
     const { idtin } = useParams();
+
     const [chitietTinBds, setchitietTinBds] = useState(null);
-    console.log(idtin);
+    const [chitietTienich, setchitietTienich] = useState([]);
+    //console.log(idtin);
     async function laychitietTinBds() {
         const data = await xemchitietBds(idtin);
         setchitietTinBds(data);
+        setchitietTienich(data.cttintienich);
+        //showQuanHuyen(data.tinh_thanhpho);
+        showPhuongXa(data.quan_huyen)
     }
+    // const [listQuanHuyen, setListQuanHuyen] = useState([]);
+    // //console.log(listQuanHuyen);
+
+    // async function showQuanHuyen(id) {
+    //     const quanhuyen = await getAllQuanHuyen(id);
+    //     setListQuanHuyen(quanhuyen);
+    // }
+
+    const [listPhuongXa, setListPhuongXa] = useState([]);
+    async function showPhuongXa(idQuanHuyen) {
+        const phuongxa = await getAllPhuongXa(idQuanHuyen);
+        setListPhuongXa(phuongxa);
+    }
+
 
     const [chitietHinhTinBds, setchitietHinhTinBds] = useState(null);
     async function laychitietHinhTinBds() {
@@ -38,17 +61,19 @@ function Chitiettin() {
                 chitietTinBds != null && <>
                     <hr></hr>
                     <div>
-                        <h4>Thông Tin</h4>
+                        <h4><b>Thông Tin Bất Động Sản</b></h4>
                     </div>
+
                     <Row>
                         <Col md={12}>
-                            <div className="border border-light p-2 ">
+                            <div className="border border-dark p-3 ">
 
-                                <div className="mt-2">
-                                    <h4>Thông Tin</h4>
-                                </div>
+                                <h4 className="tieudechitiettin">{chitietTinBds.tieude}</h4>
                                 <div className="d-flex align-items-end justify-content-center">
-                                    <img width="100%" height="100%" src={`${BACKEND_URL}/img/tinbds/${chitietTinBds.hinhdaidien}`} />
+                                    <img width="500px" height="400px" src={`${BACKEND_URL}/img/tinbds/${chitietTinBds.hinhdaidien}`} />
+                                </div>
+                                <div className="mt-2">
+                                    <h4><b>Thông Tin Cơ Bản</b></h4>
                                 </div>
                                 <div>
                                     <Row>
@@ -58,7 +83,41 @@ function Chitiettin() {
                                                 <tbody>
                                                     <tr >
                                                         <td width="40%"><b>Địa Chỉ:</b></td>
-                                                        <td>{chitietTinBds.diachi}</td>
+                                                        <td>{chitietTinBds.diachi}
+                                                        {/* {
+                                                            listQuanHuyen.length!==0 && 
+                                                                  <>{listQuanHuyen[0].province}</>
+                                                               
+                                                        }, */}
+
+                                                            {
+                                                                listPhuongXa.length !== 0 && listPhuongXa.map(phuongxa => {
+                                                                    if (phuongxa.code == chitietTinBds.phuong_xa) {
+                                                                        return (
+                                                                            <>
+                                                                             , {phuongxa.name} 
+                                                                                 , {phuongxa.district} 
+                                                                                 , {phuongxa.province}</>
+                                                                        )
+                                                                    }
+                                                                })
+                                                            }
+                                                        {/* {
+                                                                listPhuongXa.length !== 0 &&
+                                                                <>{listPhuongXa[0].district}</>
+
+                                                            },
+                                                        {
+                                                                listPhuongXa.length !== 0 && listPhuongXa.map(phuongxa => {
+                                                                    if (phuongxa.code == chitietTinBds.phuong_xa) {
+                                                                        return (
+                                                                            <>{phuongxa.province}</>
+                                                                        )
+                                                                    }
+                                                                })
+                                                            } */}
+                                                        </td>
+
                                                     </tr>
                                                     <tr >
                                                         <td><b>Hình Thức:</b></td>
@@ -93,8 +152,8 @@ function Chitiettin() {
                                             <Table className="table table-bordered mt-2">
                                                 <tbody>
                                                     <tr>
-                                                        <td width="40%"><b>Giá:</b></td>
-                                                        <td>{chitietTinBds.giaca} {chitietTinBds.donvitinh}</td>
+                                                        <td width="40%"><b >Giá:</b></td>
+                                                        <td className="tieudechitiettin">{chitietTinBds.giaca} {chitietTinBds.donvitinh}</td>
                                                     </tr>
                                                     <tr >
                                                         <td><b>Hướng:</b></td>
@@ -129,15 +188,20 @@ function Chitiettin() {
                                                 <tbody>
                                                     <tr>
                                                         <td width="25%"><b>Các Tiện Ích:</b></td>
-                                                        <td>Thornton</td>
+                                                        <td>
+                                                            {chitietTienich.length != 0 && chitietTienich.map(tienich => {
+                                                                return (
+                                                                    <div >{tienich.tienich.tentienich}</div>
+                                                                )
+                                                            })}
+                                                        </td>
                                                     </tr>
-
                                                 </tbody>
                                             </Table>
                                         </Col>
 
                                         <Col md={6}>
-                                            <div>
+                                            <div className="errorvalidate">
                                                 <h4><b>Liên Hệ</b></h4>
                                             </div>
                                             <Table className="table table-bordered mt-2">
@@ -163,7 +227,7 @@ function Chitiettin() {
                             </div>
                         </Col>
                     </Row>
-                    <div className="border border-light p-2 mt-2">
+                    <div className="border border-dark p-3 mt-2">
                         <h4><b>Thông Tin Mô Tả:</b></h4>
 
                         <span>{chitietTinBds.mota}</span>
@@ -174,33 +238,57 @@ function Chitiettin() {
 
 
                     <div className="border border-light p-2 mt-2">
-                        <h4><b>Hình ảnh bất động sản</b></h4><hr></hr>
-                        <Row className="ml-2">
-                            <Button variant="outline-primary">Hình Ảnh</Button>
+                        <h4><b>Hình ảnh bất động sản</b></h4>
 
-                            <Button variant="outline-success">360</Button>
-
-                        </Row>
                         <hr></hr>
-                        <Carousel>
+                        <Carousel className="bg-light" style={{ height: "600px" }}>
                             {
                                 chitietHinhTinBds == null && <h1>Loadinggggggggg</h1>
                             }
                             {
                                 chitietHinhTinBds != null && chitietHinhTinBds.map(timKiem => {
-                                    return (
-                                        <Carousel.Item>
-                                            <img width="100%" height="80%"
+                                    if (timKiem.id_phanloai_media == 1) {
+                                        return (
 
-                                                className="d-block w-100"
-                                                src={`${BACKEND_URL}/img/tinbds/${timKiem.link}`}
-                                                alt=""
-                                            />
-                                        </Carousel.Item>
-                                    )
+                                            <Carousel.Item style={{ height: "100%" }}>
+
+                                                <img height="100%"
+                                                    className=" container-sm d-block w-90 h-90 "
+                                                    src={`${BACKEND_URL}/img/tinbds/${timKiem.link}`}
+                                                    alt=""
+                                                />
+
+                                            </Carousel.Item>
+
+                                        )
+                                    }
                                 }
                                 )}
                         </Carousel>
+                        <hr></hr>
+                        <div>
+                            {
+                                chitietHinhTinBds == null && <h1>Loadinggggggggg</h1>
+                            }
+                            {
+                                chitietHinhTinBds != null && chitietHinhTinBds.map(timKiem => {
+                                    if (timKiem.id_phanloai_media == 2) {
+                                        return (
+                                            <>
+                                                <h4><b>Thực tế ảo</b></h4>
+                                                <iframe width="100%" height="500px"
+                                                    src={`${timKiem.link}`}
+                                                    alt=""
+                                                />
+                                            </>
+
+                                        )
+                                    }
+
+                                }
+                                )}
+
+                        </div>
                     </div>
                     <hr></hr>
                     <div className="border border-light p-2 mt-2 mb-5">
@@ -240,7 +328,7 @@ function Chitiettin() {
                     </div>
                 </>
             }
-        </Container>
+        </Container >
 
     );
 }

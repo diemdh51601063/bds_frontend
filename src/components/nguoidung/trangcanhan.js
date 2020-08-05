@@ -18,15 +18,16 @@ function TrangCaNhanComponent() {
             :
             <>
                 <div>
-                    <Row className="ml-5">
-                        <Col md={2.5} className="ml-5" >
-                            <div className="bg-primary mt-2" >
+                    <Row className="ml-5 mr-5">
+                        <Col md={3} >
+                            <Container>
+                            <div className="mt-3" >
                                 <h4><b>THÔNG TIN CÁ NHÂN</b></h4>
                             </div>
                             <div className="border border-light p-2 mb-2">
                                 <img className="ml-5 mr-5" width="60%" height="50%" src="http://file4.batdongsan.com.vn/images/default-user-avatar-blue.jpg"></img>
                                 <Row>
-                                    <Col md={4}>
+                                    <Col md={3}>
                                         <div className="mt-2 text-drak">
                                             <b>Họ tên:</b>
                                         </div>
@@ -39,7 +40,7 @@ function TrangCaNhanComponent() {
                                 </Row>
                                 <Row>
 
-                                    <Col md={4}>
+                                    <Col md={3}>
                                         <div className="mt-2 text-drak">
                                             <b>SĐT:</b>
                                         </div>
@@ -51,7 +52,7 @@ function TrangCaNhanComponent() {
 
                                 </Row>
                                 <Row>
-                                    <Col md={4}>
+                                    <Col md={3}>
                                         <div className="mt-2 text-drak">
                                             <b>Email:</b>
                                         </div>
@@ -63,7 +64,7 @@ function TrangCaNhanComponent() {
 
                                 </Row>
                                 <Row>
-                                    <Col md={4}>
+                                    <Col md={3}>
                                         <div className="mt-2 text-drak">
                                             <b>CMND:</b>
                                         </div>
@@ -75,15 +76,15 @@ function TrangCaNhanComponent() {
 
                                 </Row>
                                 <div>
-
-                                    <Button variant="success" size="lg" type="submit" onClick={handleShow2}><b>Sửa Thông Tin Cá Nhân</b></Button>
+                                    <Button className="ml-4 mr-3" variant="success" size="lg" type="submit" onClick={handleShow2}><b>Sửa Thông Tin Cá Nhân</b></Button>
                                 </div>
                             </div>
+                            </Container>
                         </Col>
 
                         <Col md={9}>
                             {/* quan ly danh sach tin bds */}
-                            <div className="bg-primary mt-2">
+                            <div className="mt-3">
                                 <h4><b>QUẢN LÝ DANH SÁCH TIN BẤT ĐỘNG SẢN</b></h4>
                             </div>
                             <div className="border border-light p-2 mb-2">
@@ -93,7 +94,7 @@ function TrangCaNhanComponent() {
                                         <thead>
                                             <tr className="bg-info">
                                                 <th width="10%">Mã Tin</th>
-                                                <th width="55%">Tiêu Đề</th>
+                                                <th width="50%">Tiêu Đề</th>
                                                 <th width="10%">Ngày Bắt Đầu</th>
                                                 <th width="10%">Ngày Hết Hạn</th>
                                                 <th width="15%">Thao Tác</th>
@@ -101,35 +102,34 @@ function TrangCaNhanComponent() {
                                         </thead>
                                         <tbody>
                                             {
-                                                
-                                                listBds.length !== 0  && listBds.map(tinBds => {
-                                                    if(tinBds.khachhang.id== decodeToken().id_khachhang )
-                                                        return (
-                                                            <>
-                                                                <tr>
-                                                                    <td>{tinBds.id}</td>
-                                                                    <td>{tinBds.tieude}</td>
-                                                                    <td>Thornton</td>
-                                                                    <td>@fat</td>
-                                                                    <td>
-                                                                        <Row>
-                                                                            <Col md={5}>
-                                                                                <Button type="submit" variant="danger" size="sm">Xóa</Button>
-                                                                            </Col>
-                                                                            <Col md={5}>
-                                                                                <Button type="submit" variant="info" size="sm">Sửa</Button>
-                                                                            </Col>
-    
-                                                                        </Row>
-                                                                    </td>
-                                                                </tr>
-                                                            </>
-                                                        )
-                                                   
+                                                listBds.length !== 0 && listBds.map(tinBds => {
+                                                    if (tinBds.khachhang.id == decodeToken().id_khachhang) {
+                                                        if (tinBds.cttindichvu[0].hethan == 0)
+                                                            return (
+                                                                <>
+                                                                    <tr>
+                                                                        <td>{tinBds.id}</td>
+                                                                        <td>{tinBds.tieude}</td>
+                                                                        <td>{tinBds.cttindichvu[0].ngaybatdau}</td>
+                                                                        <td>{tinBds.cttindichvu[0].ngayketthuc}</td>
+                                                                        <td>
+                                                                            <Row>
+                                                                                <Col md={5}>
+                                                                                    <Button type="submit" variant="danger" size="sm">Ẩn</Button>
+                                                                                </Col>
+                                                                                <Col md={5}>
+                                                                                    <Button type="submit" variant="info" size="sm">Sửa</Button>
+                                                                                </Col>
+
+                                                                            </Row>
+                                                                        </td>
+                                                                    </tr>
+                                                                </>
+                                                            )
+                                                    }
+
                                                 })
                                             }
-
-
                                         </tbody>
                                     </Table>
                                 </div>
@@ -139,43 +139,39 @@ function TrangCaNhanComponent() {
                                         <thead>
                                             <tr className="bg-dark text-white">
                                                 <th width="10%">Mã Tin</th>
-                                                <th width="60%">Tiêu Đề</th>
+                                                <th width="50%">Tiêu Đề</th>
                                                 <th width="10%">Ngày Hết Hạn</th>
-                                                <th width="18%">Thao Tác</th>
+                                                <th width="20%">Thao Tác</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>
-                                                    <Row>
-                                                        <Col md={4}>
-                                                            <Button type="submit" variant="danger" size="sm">Xóa</Button>
-                                                        </Col>
-                                                        <Col md={8}>
-                                                            <Link to="/chinhsuatin"><Button type="submit" variant="dark" size="sm">Đăng lại</Button></Link>
-                                                        </Col>
-                                                    </Row>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>
-                                                    <Row>
-                                                        <Col md={4}>
-                                                            <Button type="submit" variant="danger" size="sm">Xóa</Button>
-                                                        </Col>
-                                                        <Col md={8}>
-                                                            <Button type="submit" variant="dark" size="sm">Đăng lại</Button>
-                                                        </Col>
-                                                    </Row>
-                                                </td>
-                                            </tr>
+                                            {
+                                                listBds.length !== 0 && listBds.map(tinBds => {
+                                                    if (tinBds.khachhang.id == decodeToken().id_khachhang) {
+                                                        if (tinBds.cttindichvu[0].hethan == 1)
+                                                            return (
+                                                                <>
+                                                                    <tr>
+                                                                        <td>{tinBds.id}</td>
+                                                                        <td>{tinBds.tieude}</td>
+                                                                        <td>{tinBds.cttindichvu[0].ngayketthuc}</td>
+                                                                        <td>
+                                                                            <Row>
+                                                                                <Col md={4}>
+                                                                                    <Button type="submit" variant="danger" size="sm">Xóa</Button>
+                                                                                </Col>
+                                                                                <Col md={8}>
+                                                                                    <Button type="submit" variant="dark" size="sm">Đăng lại</Button>
+                                                                                </Col>
+                                                                            </Row>
+                                                                        </td>
+                                                                    </tr>
+                                                                </>
+                                                            )
+                                                    }
 
+                                                })
+                                            }
                                         </tbody>
                                     </Table>
                                 </div>
